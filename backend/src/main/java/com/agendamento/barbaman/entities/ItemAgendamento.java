@@ -15,7 +15,6 @@ public class ItemAgendamento implements Serializable {
 	
 	private Profissional profissional;
 	
-	
 	public ItemAgendamento() {
 		
 	}
