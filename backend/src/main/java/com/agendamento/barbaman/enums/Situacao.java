@@ -1,5 +1,5 @@
 package com.agendamento.barbaman.enums;
 
-public enum Tipo {
+public enum Situacao {
 	RESERVADO,LIBERADO;
 }

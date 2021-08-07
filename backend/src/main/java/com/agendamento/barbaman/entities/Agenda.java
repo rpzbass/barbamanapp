@@ -8,7 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.agendamento.barbaman.enums.Situacao;
 
 @Entity
 @Table(name = "tb_agenda")
@@ -22,14 +26,23 @@ public class Agenda implements Serializable {
 	private Long id;
 	
 	private Instant horario;
+	private Situacao situacao;
+	
+	@ManyToOne
+	@JoinColumn(name = "profissional_id")
+	private Profissional profissional;
+	
 	
 	
 	public Agenda() {
 		
 	}
 	
-	public Agenda(Instant horario) {
+	public Agenda(Long id,Instant horario,Situacao situacao) {
+			
+			this.id = id;
 			this.horario = horario;
+			this.situacao = situacao;
 	}
 
 	public Instant getHorario() {

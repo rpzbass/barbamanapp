@@ -33,6 +33,9 @@ public class Agendamento implements Serializable {
 	private Set<ItemAgendamento> agendamentos = new HashSet<>();
 	
 	
+	
+	
+	
 	public Long getId() {
 		return id;
 	}

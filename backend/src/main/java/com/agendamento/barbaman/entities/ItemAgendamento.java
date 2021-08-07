@@ -21,6 +21,7 @@ public class ItemAgendamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Column(name = "id")
 	private Long id;
 	private Instant horario;
@@ -30,6 +31,13 @@ public class ItemAgendamento implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "profissional_id", referencedColumnName = "id")
 	private Profissional profissional;
+	
+	
+	
+	
+	
+	
+	
 	
 	public ItemAgendamento() {
 		

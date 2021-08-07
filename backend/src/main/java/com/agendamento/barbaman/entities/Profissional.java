@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.agendamento.barbaman.enums.Status;
 
 @Entity
 @Table(name = "tb_profissional")
@@ -25,7 +28,7 @@ public class Profissional implements Serializable  {
 	private Long id;
 	private String nome;
 	private String celular;
-	
+	private Status status;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_profissional_especialidade",
@@ -34,15 +37,30 @@ public class Profissional implements Serializable  {
 	private Set<Especialidade> especialidades = new HashSet<>();
 	
 	
+	@OneToMany(mappedBy = "profissional")
+	private Set<Agenda> horarios = new HashSet<>();
+	
+	
+
+	
+	public Set<Agenda> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(Set<Agenda> horarios) {
+		this.horarios = horarios;
+	}
+
 	public Profissional() {
 		
 	}
 	
-	public Profissional(Long id,String nome,String celular) {
+	public Profissional(Long id,String nome,String celular,Status status) {
 		
 		this.id = id;
 		this.nome = nome;
 		this.celular = celular;
+		this.status = status;
 		
 	}
 

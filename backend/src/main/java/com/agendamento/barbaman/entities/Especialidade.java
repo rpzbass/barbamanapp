@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.agendamento.barbaman.enums.Possui;
+
 @Entity
 @Table(name = "tb_especialidade")
 public class Especialidade implements Serializable {
@@ -25,19 +27,18 @@ public class Especialidade implements Serializable {
 	private String nome;
 	private Double valor;
 	private String descricao;
-	
-	
+	private Possui possui;
 	
 	public Especialidade() {
 		
 	}
-	public Especialidade(Long id,String nome,Double valor, String descricao) {
+	public Especialidade(Long id,String nome,Double valor, String descricao, Possui possui) {
 		
 		this.id = id;
 		this.nome = nome;
 		this.valor = valor;
 		this.descricao = descricao;
-		
+		this.possui = possui;
 	}
 	public Long getId() {
 		return id;
