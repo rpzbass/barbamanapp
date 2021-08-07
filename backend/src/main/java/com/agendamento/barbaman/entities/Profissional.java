@@ -19,10 +19,10 @@ import com.agendamento.barbaman.enums.Status;
 
 @Entity
 @Table(name = "tb_profissional")
-public class Profissional implements Serializable  {
+public class Profissional implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -30,21 +30,23 @@ public class Profissional implements Serializable  {
 	private String celular;
 	private Status status;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_profissional_especialidade",
-	joinColumns = @JoinColumn(name = "profissional_id"),
-	inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
-	private Set<Especialidade> especialidades = new HashSet<>();
 	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_profissional_especialidade", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
+	private Set<Especialidade> especialidades = new HashSet<>();
+
 	
 	@OneToMany(mappedBy = "profissional")
 	private Set<Agenda> horarios = new HashSet<>();
-	
-	
 
-	
 	public Set<Agenda> getHorarios() {
 		return horarios;
+	}
+
+	@Override
+	public String toString() {
+		return "Profissional [id=" + id + ", nome=" + nome + ", celular=" + celular + ", status=" + status
+				+ ", especialidades=" + especialidades + ", horarios=" + horarios + "]";
 	}
 
 	public void setHorarios(Set<Agenda> horarios) {
@@ -52,16 +54,16 @@ public class Profissional implements Serializable  {
 	}
 
 	public Profissional() {
-		
+
 	}
-	
-	public Profissional(Long id,String nome,String celular,Status status) {
-		
+
+	public Profissional(Long id, String nome, String celular, Status status) {
+
 		this.id = id;
 		this.nome = nome;
 		this.celular = celular;
 		this.status = status;
-		
+
 	}
 
 	public Long getId() {
@@ -120,12 +122,5 @@ public class Profissional implements Serializable  {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

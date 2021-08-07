@@ -34,15 +34,38 @@ public class Agenda implements Serializable {
 	
 	
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
+	@Override
+	public String toString() {
+		return "Agenda [id=" + id + ", horario=" + horario + ", situacao=" + situacao + ", profissional=" + profissional.getId()
+				+ "]";
+	}
+
 	public Agenda() {
 		
 	}
 	
-	public Agenda(Long id,Instant horario,Situacao situacao) {
+	public Agenda(Long id,Instant horario,Situacao situacao,Profissional profissional) {
 			
 			this.id = id;
 			this.horario = horario;
 			this.situacao = situacao;
+			this.setProfissional(profissional);
 	}
 
 	public Instant getHorario() {

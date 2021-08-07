@@ -43,6 +43,11 @@ public class Especialidade implements Serializable {
 	public Long getId() {
 		return id;
 	}
+	@Override
+	public String toString() {
+		return "Especialidade [id=" + id + ", nome=" + nome + ", valor=" + valor + ", descricao=" + descricao
+				+ ", possui=" + possui + "]";
+	}
 	public void setId(Long id) {
 		this.id = id;
 	}
